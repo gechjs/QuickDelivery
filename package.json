@@ -1,0 +1,17 @@
+{
+  "name": "QuickDelivery",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start"
+  },
+  "dependencies": {
+    "expo": "~42.0.0",
+    "react": "17.0.0",
+    "react-native": "0.64.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0"
+  },
+  "private": true
+}
