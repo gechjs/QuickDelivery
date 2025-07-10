@@ -2,6 +2,13 @@
 
 A food delivery app built with React Native and Expo.
 
+## Features
+
+- Browse restaurants and menus
+- Add items to cart
+- User authentication
+- Real-time order tracking
+
 ## Getting Started
 
 1. Install dependencies: `npm install`
