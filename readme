@@ -1,0 +1,18 @@
+# A2SV Task 2 - Word Frequency & Palindrome Checker
+
+This is a simple Go project that provides two main functions:
+- **WordFrequency**: Counts the frequency of each word in a string (case-insensitive, ignoring punctuation).
+- **IsPalindrome**: Checks whether a string is a palindrome, ignoring spaces, punctuation, and capitalization.
+
+## Setup
+
+Make sure you have Go installed (1.18+ recommended).
+
+Initialize the module (if not done):
+
+```bash
+go mod init a2sv-task2
+
+To run the main program:  go run .
+
+To run tests:   go test
