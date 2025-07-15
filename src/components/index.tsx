@@ -1,2 +1,2 @@
 // Components index
-export {};
+export * from './ButtonWithIcon';
