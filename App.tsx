@@ -1,21 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { store } from './src/redux';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { HomeScreen } from './src/screens/HomeScreen';
+import { LandingScreen } from './src/screens/LandingScreen';
+
+const AppNavigation = createSwitchNavigator(
+  {
+    Landing: LandingScreen,
+    Main: createStackNavigator({ Home: HomeScreen }, { headerMode: 'none' }),
+  },
+  { initialRouteName: 'Landing' }
+);
+
+const Navigator = createAppContainer(AppNavigation);
 
 export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <HomeScreen />
+        <Navigator />
       </View>
     </Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f7f7f7' },
+  container: { flex: 1 },
 });
     Account: {
       screen: createStackNavigator({
