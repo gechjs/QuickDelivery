@@ -5,9 +5,15 @@ import { FoodModel } from '../redux';
 interface FoodCardProps {
   item: FoodModel;
   onTap: (item: FoodModel) => void;
+  onUpdateCart?: (food: FoodModel) => void;
 }
 
-export const FoodCard: React.FC<FoodCardProps> = ({ item, onTap }) => {
+export const FoodCard: React.FC<FoodCardProps> = ({ item, onTap, onUpdateCart }) => {
+  const onAdd = () => {
+    const updated = { ...item, unit: (item.unit || 0) + 1 };
+    onUpdateCart && onUpdateCart(updated);
+  };
+
   return (
     <TouchableOpacity style={styles.container} onPress={() => onTap(item)}>
       <Image source={{ uri: item.images[0] }} style={styles.image} />
@@ -15,6 +21,9 @@ export const FoodCard: React.FC<FoodCardProps> = ({ item, onTap }) => {
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.category}>{item.category}</Text>
         <Text style={styles.price}>₹{item.price}</Text>
+        <TouchableOpacity style={styles.addButton} onPress={onAdd}>
+          <Text style={styles.addText}>Add</Text>
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
@@ -52,5 +61,16 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontWeight: '700',
     color: '#f15b5d',
+  },
+  addButton: {
+    marginTop: 8,
+    padding: 8,
+    backgroundColor: '#f15b5d',
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  addText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
