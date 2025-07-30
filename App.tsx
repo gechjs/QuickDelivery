@@ -5,11 +5,12 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { LandingScreen } from './src/screens/LandingScreen';
+import { OrderScreen } from './src/screens/OrderScreen';
 
 const AppNavigation = createSwitchNavigator(
   {
     Landing: LandingScreen,
-    Main: createStackNavigator({ Home: HomeScreen }, { headerMode: 'none' }),
+    Main: createStackNavigator({ Home: HomeScreen, Order: OrderScreen }, { headerMode: 'none' }),
   },
   { initialRouteName: 'Landing' }
 );

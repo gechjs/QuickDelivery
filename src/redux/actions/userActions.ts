@@ -15,12 +15,30 @@ export interface UserLoginAction {
   payload: UserModel;
 }
 
-export type UserAction = UpdateLocationAction | UpdateCartAction | UserLoginAction;
+export interface PlaceOrderAction {
+  readonly type: 'ON_PLACE_ORDER';
+  payload: any;
+}
+
+export type UserAction = UpdateLocationAction | UpdateCartAction | UserLoginAction | PlaceOrderAction;
 
 export const onUpdateLocation = (address: Address): UpdateLocationAction => ({
   type: 'ON_UPDATE_LOCATION',
   payload: address,
 });
+
+export const placeOrder = (order: any): PlaceOrderAction => ({
+  type: 'ON_PLACE_ORDER',
+  payload: order,
+});
+
+export const createOrder = (order: any) => {
+  return async (dispatch: any) => {
+    // In real app, call backend API here
+    dispatch(placeOrder(order));
+    return order;
+  };
+};
 
 export const onUpdateCart = (food: any): UpdateCartAction => ({
   type: 'ON_UPDATE_CART',
