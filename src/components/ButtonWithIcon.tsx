@@ -23,7 +23,7 @@ return (
 
 
 const styles = StyleSheet.create({
-    btn: { display: 'flex',  justifyContent: 'center', alignItems: 'center', width: 60, height: 40},
+    btn: { display: 'flex', justifyContent: 'center', alignItems: 'center', width: 60, height: 40, borderRadius: 10, backgroundColor: '#f15b5d', padding: 6 },
 })
 
  export { ButtonWithIcon }
