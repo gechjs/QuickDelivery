@@ -25,6 +25,7 @@ const _HomeScreen: React.FC<HomeProps> = ({ shoppingReducer }) => {
       <FlatList
         data={restaurants}
         keyExtractor={(item) => item._id}
+        contentContainerStyle={styles.list}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => onTapRestaurant(item)}>
             <RestaurantCard item={item} onTap={onTapRestaurant} />
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 20, backgroundColor: '#f7f7f7' },
   title: { fontSize: 24, fontWeight: '700', paddingHorizontal: 20 },
   subtitle: { fontSize: 16, color: '#626262', paddingHorizontal: 20, marginBottom: 12 },
+  list: { paddingBottom: 20 },
 });
 
 const mapStateToProps = (state: ApplicationState) => ({
