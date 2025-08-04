@@ -32,14 +32,20 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [isSignup, setIsSignup] = useState(false);
 
   const onTapAuthenticate = async () => {
+    if (!email || !password) {
+      alert('Please enter both email and password');
+      return;
+    }
+
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
     try {
-      if (isSignup) {
-        // placeholder sign-up flow
-        await loginUser(email, password);
-      } else {
-        await loginUser(email, password);
-      }
+      await loginUser(email, password);
     } catch (err) {
+      alert('Login failed. Try again.');
       console.error(err);
     }
   };
