@@ -8,6 +8,11 @@ A food delivery app built with React Native and Expo.
 - Add items to cart
 - User authentication
 - Real-time order tracking
+- Backend API integration with axios
+
+## API Usage
+
+Use `src/utils/index.tsx` to configure `BASE_URL` before calling backend routes.
 
 ## Getting Started
 
