@@ -24,8 +24,12 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 8,
     marginVertical: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
   },
   text: { fontSize: 16, fontWeight: '700' },
 });
