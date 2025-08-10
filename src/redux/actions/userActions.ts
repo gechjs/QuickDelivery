@@ -40,6 +40,14 @@ export const createOrder = (order: any) => {
   };
 };
 
+export const cancelOrder = (orderId: string) => {
+  return async (dispatch: any) => {
+    // placeholder cancellation flow
+    const cancelled = { orderId, status: 'Cancelled' };
+    return cancelled;
+  };
+};
+
 export const onUpdateCart = (food: any): UpdateCartAction => ({
   type: 'ON_UPDATE_CART',
   payload: food,
