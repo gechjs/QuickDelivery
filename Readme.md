@@ -17,7 +17,14 @@ Use `src/utils/index.tsx` to configure `BASE_URL` before calling backend routes.
 ## Getting Started
 
 1. Install dependencies: `npm install`
-2. Start the app: `npm start`
+2. Run linter: `npm run lint` (after installing eslint)
+3. Start the app: `npm start`
+
+## Advanced
+
+- Run backend: `cd backend && docker-compose up --build`
+- Start Expo on Android: `npm run android`
+- Start Expo on iOS: `npm run ios`
 
 You are only allowed to Fork this repository and clone it for only learning purpose with credit to original repo. If we found redistributing any of the material of this tutorial series. My Lawyer will handle it with a penalty as per international copyright law.
 
