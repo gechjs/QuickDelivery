@@ -19,36 +19,23 @@ const UserReducer = (state: UserState = initialState, action: UserAction) => {
         location: payload,
       };
     case "ON_UPDATE_CART":
-      if (!Array.isArray(state.Cart)) {
-        return {
-          ...state,
-          Cart: [action.payload],
-        };
-      }
+      const updateProduct = action.payload;
+      const existingIndex = state.Cart.findIndex((item) => item._id === updateProduct._id);
 
-      const existingFoods = state.Cart.filter(
-        (item) => item._id == action.payload._id
-      );
-
-      //Check for Existing Product to update unit
-      if (existingFoods.length > 0) {
-        let updatedCart = state.Cart.map((food) => {
-          if (food._id == action.payload._id) {
-            food.unit = action.payload.unit;
-          }
-          return food;
-        });
+      if (existingIndex >= 0) {
+        const updatedCart = state.Cart.map((item, idx) =>
+          idx === existingIndex ? { ...item, unit: updateProduct.unit } : item
+        );
 
         return {
           ...state,
           Cart: updatedCart.filter((item) => item.unit > 0),
         };
-      } else {
-        // Add to cart if not added
-        return {
-          ...state,
-          Cart: [...state.Cart, action.payload],
-        };
+      }
+
+      return {
+        ...state,
+        Cart: [...state.Cart, updateProduct],
       }
     case "ON_USER_LOGIN":
       return {
