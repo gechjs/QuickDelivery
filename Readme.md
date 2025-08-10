@@ -26,6 +26,12 @@ Use `src/utils/index.tsx` to configure `BASE_URL` before calling backend routes.
 - Start Expo on Android: `npm run android`
 - Start Expo on iOS: `npm run ios`
 
+## Release Notes
+
+- v1.0.0: Core order, cart, and navigation flow implemented.
+- v1.1.0: Added real-time delivery tracking and payment stub.
+- v1.2.0: Added lint/test scripts and improved type safety.
+
 You are only allowed to Fork this repository and clone it for only learning purpose with credit to original repo. If we found redistributing any of the material of this tutorial series. My Lawyer will handle it with a penalty as per international copyright law.
 
     Note: Several persons have already been fined with penalties for violating the copyright rules.
