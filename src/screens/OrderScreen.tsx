@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { ApplicationState, UserState } from '../redux';
+import { useEffect, useState } from 'react';
+import { onStatusUpdate, startDeliveryTracking } from '../utils/realTimeTracker';
 
 interface OrderScreenProps {
   userReducer: UserState;
@@ -9,6 +11,24 @@ interface OrderScreenProps {
 
 const _OrderScreen: React.FC<OrderScreenProps> = ({ userReducer }) => {
   const { orders } = userReducer;
+  const [status, setStatus] = useState('Pending');
+
+  useEffect(() => {
+    if (!orders || orders.length === 0) return;
+
+    const unsubscribe = onStatusUpdate((data: any) => {
+      if (data.orderId === orders[orders.length - 1].id) {
+        setStatus(data.status);
+      }
+    });
+
+    const stop = startDeliveryTracking(orders[orders.length - 1].id);
+
+    return () => {
+      unsubscribe();
+      stop();
+    };
+  }, [orders]);
 
   if (!orders || orders.length === 0) {
     return (
@@ -28,7 +48,7 @@ const _OrderScreen: React.FC<OrderScreenProps> = ({ userReducer }) => {
           <Text style={styles.orderTitle}>Order #{item.id || '#'+Math.floor(Math.random()*10000)}</Text>
           <Text>Total: ₹{item.total?.toFixed(2) || '0.00'}</Text>
           <Text>Items: {item.items?.length || 0}</Text>
-          <Text>Status: {item.status || 'Placed'}</Text>
+          <Text>Status: {status || item.status || 'Placed'}</Text>
         </View>
       )}
     />
